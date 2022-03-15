@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Main {
+public class InsertionSort {
     public static void main(String[] args) {
         // declare an array and print the original contents
         int[] numArray = { 10, 6, 15, 4, 1, 45 };
