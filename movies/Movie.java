@@ -4,6 +4,7 @@ package movies;
  * Movie
  */
 public class Movie implements Comparable<Movie> {
+    private static String comparableAtribute = "title";
     private int id; 
     private String title;
     private String duration;
@@ -34,12 +35,18 @@ public class Movie implements Comparable<Movie> {
         this.movieIMDBLink = movieIMDBLink;
     }
 
+    public static void setYearAsCompareCriteria(){
+        Movie.comparableAtribute = "year";
+    }
+
+    public static void setTitleAsCompareCriteria() {
+        Movie.comparableAtribute = "title";
+
+    }
+
     @Override
     public String toString() {
-        return "" + IMDBScore + "," + aspectRatio + "," + budget + ","
-                + color + "," + contentRating + "," + country + "," + duration
-                + "," + id + "," + language + "," + movieIMDBLink + "," + title
-                + "," + titleYear;
+        return "" + budget + "," + title + "," + titleYear;
     }
 
     @Override
@@ -88,11 +95,18 @@ public class Movie implements Comparable<Movie> {
 
     @Override
     public int compareTo(Movie o) {
-        if (o.getTitleYear() > this.getTitleYear())
-            return -1;
-        else if (o.getTitleYear() == this.getTitleYear())
-            return 0;
-        return -1;
+        if (Movie.comparableAtribute.equals("title")){
+            if (this.getTitle().compareTo(o.getTitle()) < 0 )
+                return -1;
+            else if (o.getTitleYear() == this.getTitleYear())
+                return 0;
+        } else if (Movie.comparableAtribute.equals("year")){
+            if (o.getTitleYear() > this.getTitleYear())
+                return -1;
+            else if (o.getTitleYear() == this.getTitleYear())
+                return 0;
+        }
+        return 1;
     }
 
     public String getTitle() {

@@ -1,25 +1,23 @@
-package CSVUtils;
+package Utils;
 
 import com.opencsv.*;
 
 import java.io.*;
 import java.io.File;
 
-import Link.LinkList;
 import movies.Movie;
 
 public class CSVRead {
     private FileReader archCSV;
     private CSVReader csvReader;
-    private LinkList<Movie> moviesList;
+    private Movie[] moviesList;
 
     public CSVRead() {
         this.archCSV = null;
         this.csvReader = null;
-        this.moviesList = new LinkList<Movie>();
     }
 
-    public LinkList<Movie> getMoviesList() {
+    public Movie[] getMoviesList() {
         return moviesList;
     }
 
@@ -31,14 +29,16 @@ public class CSVRead {
         }
     }
 
-    public void Read_Save(int maxSize) {
+    public void Read_Save(int maxSize, String path) {
         try {
             // Leo el archivo con el separador estándar ","
-            archCSV = new FileReader("Problema02/Movie.csv");
+            archCSV = new FileReader(path);
             csvReader = new CSVReader(archCSV);
 
+            maxSize = maxSize-1;
+            moviesList = new Movie[maxSize];
             String[] fila = null;
-            int index = 0;
+            int index = -1;
             boolean first = true;
             while ((fila = csvReader.readNext()) != null) {
                 if (first) {
@@ -63,17 +63,17 @@ public class CSVRead {
                         , fila[9]
                         , fila[10]
                         , fila[11]);
-                moviesList.insertFirst(movie);
+                moviesList[index] = movie;
             }
         }
 
         catch (FileNotFoundException e) {
-            System.out.println("No se pueden capturar las calificaciones ya que el archivo no fue encontrado");
+            System.out.println("Archivo no fue encontrado");
         } catch (IOException e) {
             System.out.println(e);
         } catch (ArrayIndexOutOfBoundsException e) {
             System.out.println(
-                    "No se pueden capturar las calificaciones ya que el archivo no tiene las columnas esperadas");
+                    "El archivo no tiene las columnas esperadas");
             System.out.println(e);
         } catch (Exception e) {
             System.out.println(e.getStackTrace());

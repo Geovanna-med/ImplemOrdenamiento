@@ -1,0 +1,5 @@
+
+InsertionSort
+Elapsed Time in milli seconds: 1
+Number of comparations: 6
+Number of swaps: 6

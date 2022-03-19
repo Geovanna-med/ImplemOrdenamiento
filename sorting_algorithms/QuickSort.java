@@ -1,26 +1,39 @@
 package sorting_algorithms;
 
-public class QuickSort extends Sort{
+/*DONE */
+public class QuickSort<T extends Comparable<? super T>> extends Sort<T>{
+    
 
-    public static void sort(int[] arr, int low, int high) {
+    public void sort(T[] arr, int low, int high, boolean order) {
         if (low < high) {
-            int pi = partition(arr, low, high);
+            int pi = partition(arr, low, high, order);
 
-            sort(arr, low, pi - 1);
-            sort(arr, pi + 1, high);
+            sort(arr, low, pi - 1, order);
+            sort(arr, pi + 1, high, order);
         }
     }
 
-    private static int partition(int[] arr, int low, int high) {
-        int pivot = arr[high];
+    private int partition(T[] arr, int low, int high, boolean order) {
+        T pivot = arr[high];
         int i = (low - 1);
 
         for (int j = low; j <= high - 1; j++) {
-            if (arr[j] < pivot) {
-                i++;
-                swap(arr, i, j);
+            comparations++;
+            if(order){
+                if (arr[j].compareTo(pivot) < 0) {
+                    i++;
+                    swap(arr, i, j);
+                    swaps++;
+                }
+            } else {
+                if (arr[j].compareTo(pivot) > 0) {
+                    i++;
+                    swap(arr, i, j);
+                    swaps++;
+                }
             }
         }
+        swaps++;
         swap(arr, i + 1, high);
         return (i + 1);
     }
