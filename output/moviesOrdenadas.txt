@@ -1,5 +1,5 @@
 movie_id, movie_title, duration, color, language, country, content_rating, budget, title_year, imdb_score, aspect_ratio, movie_imdb_link
-250000000,The Dark Knight Rises ,2012
 245000000,Spectre ,2015
-300000000,Pirates of the Caribbean: At World's End ,2007
 237000000,Avatar,2009
+250000000,The Dark Knight Rises ,2012
+300000000,Pirates of the Caribbean: At World's End ,2007

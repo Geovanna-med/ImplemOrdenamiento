@@ -1,5 +1,5 @@
 
-InsertionSort
+RadixSort
 Elapsed Time in milli seconds: 1
-Number of comparations: 6
-Number of swaps: 6
+Number of comparations: 0
+Number of swaps: 0

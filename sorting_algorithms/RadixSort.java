@@ -35,11 +35,11 @@ public class RadixSort extends Sort<Movie>{
             arr[i] = output[i];
     }
 
-    public void sort(Movie arr[], int n, boolean descendant) {
+    public void sort(Movie arr[], int n, boolean ascendant) {
         int m = getMax(arr, n);
         for (int exp = 1; m / exp > 0; exp *= 10)
             countSort(arr, n, exp);
-        if(descendant)
-            reverse(arr, n);
+        if(!ascendant)
+            reverse(arr, n-1);
     }
 }

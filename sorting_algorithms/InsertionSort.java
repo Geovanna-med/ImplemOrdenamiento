@@ -1,10 +1,5 @@
 package sorting_algorithms;
 
-
-
-
-
-
 /**DONE */
 public class InsertionSort<T extends Comparable<? super T>> extends Sort<T>{
 
